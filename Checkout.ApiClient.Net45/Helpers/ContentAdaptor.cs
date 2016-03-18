@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace Checkout.Helpers
@@ -10,12 +11,14 @@ namespace Checkout.Helpers
     {
         public static string ConvertToJsonString(object model)
         {
-            return JsonConvert.SerializeObjectAsync(model).Result;
+            return Task.Factory.StartNew(() => JsonConvert.SerializeObject(model)).Result;
+            //return JsonConvert.SerializeObjectAsync(model).Result;
         }
 
         public static T JsonStringToObject<T>(string jsonString)
         {
-            return JsonConvert.DeserializeObjectAsync<T>(jsonString).Result;
+            return Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(jsonString)).Result;
+            //return JsonConvert.DeserializeObjectAsync<T>(jsonString).Result;
         }
 
         public static void Setup()

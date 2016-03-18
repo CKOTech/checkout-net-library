@@ -22,6 +22,12 @@ public class ApiUrls
     private static string _cardsApiUri;
     private static string _cardApiUri;
 
+    private static string _recurringPaymentPlanCreateApiUri;
+    private static string _recurringPaymentPlanApiUri;
+    private static string _recurringPaymentPlanSearchApiUri;
+    private static string _recurringCustomerPaymentPlanSearchApiUri;
+    private static string _recurringCustomerPaymentPlanApiUri;
+
     public static void ResetApiUrls()
     {
         _cardTokensApiUri = null;
@@ -40,6 +46,12 @@ public class ApiUrls
         _customerApiUri = null;
         _cardsApiUri = null;
         _cardApiUri = null;
+
+        _recurringPaymentPlanApiUri = null;
+        _recurringPaymentPlanCreateApiUri = null;
+        _recurringPaymentPlanSearchApiUri = null;
+        _recurringCustomerPaymentPlanSearchApiUri = null;
+        _recurringCustomerPaymentPlanApiUri = null;
     }
 
     public static string Charges
@@ -160,6 +172,28 @@ public class ApiUrls
         }
     }
 
+    public static string RecurringPaymentPlans
+    {
+        get { return _recurringPaymentPlanCreateApiUri ?? (_recurringPaymentPlanCreateApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/plans")); }
+    }
 
+    public static string RecurringPaymentPlan
+    {
+        get { return _recurringPaymentPlanApiUri ?? (_recurringPaymentPlanApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/plans/{0}")); }
+    }
 
+    public static string RecurringPaymentPlanSearch
+    {
+        get { return _recurringPaymentPlanSearchApiUri ?? (_recurringPaymentPlanSearchApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/plans/search")); }
+    }
+
+    public static string RecurringCustomerPaymentPlanSearch
+    {
+        get { return _recurringCustomerPaymentPlanSearchApiUri ?? (_recurringCustomerPaymentPlanSearchApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/customers/search")); }
+    }
+
+    public static string RecurringCustomerPaymentPlan
+    {
+        get { return _recurringCustomerPaymentPlanApiUri ?? (_recurringCustomerPaymentPlanApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/customers/{0}")); }
+    }
 }

@@ -3,6 +3,8 @@ using Checkout.ApiServices.Charges.RequestModels;
 using Checkout.ApiServices.SharedModels;
 using System;
 using System.Collections.Generic;
+using Checkout.ApiServices.RecurringPayments.RequestModels;
+using Newtonsoft.Json;
 
 namespace Checkout.ApiServices.Charges.ResponseModels
 {
@@ -22,5 +24,6 @@ namespace Checkout.ApiServices.Charges.ResponseModels
         public bool IsCascaded { get; set; }
         public string AuthCode { get; set; }
         public Address ShippingDetails { get; set; }
+        public List<CustomerPaymentPlan> CustomerPaymentPlans { get; set; }
     }
 }

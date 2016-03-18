@@ -1,166 +1,199 @@
 ﻿
-namespace Checkout
+using Checkout;
+public class ApiUrls
 {
-    public class ApiUrls
+    private static string _cardTokensApiUri;
+    private static string _paymentTokensApiUri;
+    private static string _cardChargesApiUri;
+    private static string _cardTokenChargesApiUri;
+    private static string _defaultCardChargesApiUri;
+    private static string _chargeRefundsApiUri;
+    private static string _chargeVoidApiUri;
+    private static string _captureChargesApiUri;
+    private static string _updateChargesApiUri;
+
+    private static string _chargesApiUri;
+    private static string _chargeApiUri;
+    private static string _chargeHistoryApiUri;
+
+    private static string _customersApiUri;
+    private static string _customerApiUri;
+
+    private static string _cardsApiUri;
+    private static string _cardApiUri;
+
+    private static string _recurringPaymentPlanCreateApiUri;
+    private static string _recurringPaymentPlanApiUri;
+    private static string _recurringPaymentPlanSearchApiUri;
+    private static string _recurringCustomerPaymentPlanSearchApiUri;
+    private static string _recurringCustomerPaymentPlanApiUri;
+
+    public static void ResetApiUrls()
     {
-        private static string _cardTokensApiUri;
-        private static string _paymentTokensApiUri;
-        private static string _cardChargesApiUri;
-        private static string _cardTokenChargesApiUri;
-        private static string _defaultCardChargesApiUri;
-        private static string _chargeRefundsApiUri;
-        private static string _chargeVoidApiUri;
-        private static string _captureChargesApiUri;
-        private static string _updateChargesApiUri;
+        _cardTokensApiUri = null;
+        _paymentTokensApiUri = null;
+        _cardChargesApiUri = null;
+        _cardTokenChargesApiUri = null;
+        _defaultCardChargesApiUri = null;
+        _chargeRefundsApiUri = null;
+        _chargeVoidApiUri = null;
+        _captureChargesApiUri = null;
+        _updateChargesApiUri = null;
+        _chargesApiUri = null;
+        _chargeApiUri = null;
+        _chargeHistoryApiUri = null;
+        _customersApiUri = null;
+        _customerApiUri = null;
+        _cardsApiUri = null;
+        _cardApiUri = null;
 
-        private static string _chargesApiUri;
-        private static string _chargeApiUri;
-        private static string _chargeHistoryApiUri;
+        _recurringPaymentPlanApiUri = null;
+        _recurringPaymentPlanCreateApiUri = null;
+        _recurringPaymentPlanSearchApiUri = null;
+        _recurringCustomerPaymentPlanSearchApiUri = null;
+        _recurringCustomerPaymentPlanApiUri = null;
+    }
 
-        private static string _customersApiUri;
-        private static string _customerApiUri;
-
-        private static string _cardsApiUri;
-        private static string _cardApiUri;
-
-        public static void ResetApiUrls()
+    public static string Charges
+    {
+        get
         {
-            _cardTokensApiUri = null;
-            _paymentTokensApiUri = null;
-            _cardChargesApiUri = null;
-            _cardTokenChargesApiUri = null;
-            _defaultCardChargesApiUri = null;
-            _chargeRefundsApiUri = null;
-            _chargeVoidApiUri = null;
-            _captureChargesApiUri = null;
-            _updateChargesApiUri = null;
-            _chargesApiUri = null;
-            _chargeApiUri = null;
-            _chargeHistoryApiUri = null;
-            _customersApiUri = null;
-            _customerApiUri = null;
-            _cardsApiUri = null;
-            _cardApiUri = null;
+            return _chargesApiUri ?? (_chargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges"));
         }
+    }
 
-        public static string Charges
+    public static string Charge
+    {
+        get
         {
-            get
-            {
-                return _chargesApiUri ?? (_chargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges"));
-            }
+            return _chargeApiUri ?? (_chargeApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}"));
         }
+    }
 
-        public static string Charge
+    public static string ChargeHistory
+    {
+        get
         {
-            get
-            {
-                return _chargeApiUri ?? (_chargeApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}"));
-            }
+            return _chargeHistoryApiUri ?? (_chargeHistoryApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}/history"));
         }
+    }
 
-        public static string ChargeHistory
+    public static string CaptureCharge
+    {
+        get
         {
-            get
-            {
-                return _chargeHistoryApiUri ?? (_chargeHistoryApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}/history"));
-            }
+            return _captureChargesApiUri ?? (_captureChargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}/capture"));
         }
+    }
 
-        public static string CaptureCharge
+    public static string RefundCharge
+    {
+        get
         {
-            get
-            {
-                return _captureChargesApiUri ?? (_captureChargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}/capture"));
-            }
+            return _chargeRefundsApiUri ?? (_chargeRefundsApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}/refund"));
         }
+    }
 
-        public static string RefundCharge
+    public static string VoidCharge
+    {
+        get
         {
-            get
-            {
-                return _chargeRefundsApiUri ?? (_chargeRefundsApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}/refund"));
-            }
+            return _chargeVoidApiUri ?? (_chargeVoidApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}/void"));
         }
+    }
 
-        public static string VoidCharge
+    public static string DefaultCardCharge
+    {
+        get
         {
-            get
-            {
-                return _chargeVoidApiUri ?? (_chargeVoidApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/{0}/void"));
-            }
+            return _defaultCardChargesApiUri ?? (_defaultCardChargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/customer"));
         }
+    }
 
-        public static string DefaultCardCharge
+    public static string CardTokenCharge
+    {
+        get
         {
-            get
-            {
-                return _defaultCardChargesApiUri ?? (_defaultCardChargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/customer"));
-            }
+            return _cardTokenChargesApiUri ?? (_cardTokenChargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/token"));
         }
+    }
 
-        public static string CardTokenCharge
+    public static string CardCharge
+    {
+        get
         {
-            get
-            {
-                return _cardTokenChargesApiUri ?? (_cardTokenChargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/token"));
-            }
+            return _cardChargesApiUri ?? (_cardChargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/card"));
         }
+    }
 
-        public static string CardCharge
+    public static string CardToken
+    {
+        get
         {
-            get
-            {
-                return _cardChargesApiUri ?? (_cardChargesApiUri = string.Concat(AppSettings.BaseApiUri, "/charges/card"));
-            }
+            return _cardTokensApiUri ?? (_cardTokensApiUri = string.Concat(AppSettings.BaseApiUri, "/tokens/card"));
         }
+    }
 
-        public static string CardToken
+    public static string PaymentToken
+    {
+        get
         {
-            get
-            {
-                return _cardTokensApiUri ?? (_cardTokensApiUri = string.Concat(AppSettings.BaseApiUri, "/tokens/card"));
-            }
+            return _paymentTokensApiUri ?? (_paymentTokensApiUri = string.Concat(AppSettings.BaseApiUri, "/tokens/payment"));
         }
+    }
 
-        public static string PaymentToken
+    public static string Customers
+    {
+        get
         {
-            get
-            {
-                return _paymentTokensApiUri ?? (_paymentTokensApiUri = string.Concat(AppSettings.BaseApiUri, "/tokens/payment"));
-            }
+            return _customersApiUri ?? (_customersApiUri = string.Concat(AppSettings.BaseApiUri, "/customers"));
         }
-
-        public static string Customers
+    }
+    public static string Customer
+    {
+        get
         {
-            get
-            {
-                return _customersApiUri ?? (_customersApiUri = string.Concat(AppSettings.BaseApiUri, "/customers"));
-            }
+            return _customerApiUri ?? (_customerApiUri = string.Concat(AppSettings.BaseApiUri, "/customers/{0}"));
         }
-        public static string Customer
+    }
+
+    public static string Cards
+    {
+        get
         {
-            get
-            {
-                return _customerApiUri ?? (_customerApiUri = string.Concat(AppSettings.BaseApiUri, "/customers/{0}"));
-            }
+            return _cardsApiUri ?? (_cardsApiUri = string.Concat(AppSettings.BaseApiUri, "/customers/{0}/cards"));
         }
-
-        public static string Cards {
-            get
-            {
-                return _cardsApiUri ?? (_cardsApiUri = string.Concat(AppSettings.BaseApiUri, "/customers/{0}/cards"));
-            }
-        }
-        public static string Card
+    }
+    public static string Card
+    {
+        get
         {
-            get
-            {
-                return _cardApiUri ?? (_cardApiUri = string.Concat(AppSettings.BaseApiUri, "/customers/{0}/cards/{1}"));
-            }
+            return _cardApiUri ?? (_cardApiUri = string.Concat(AppSettings.BaseApiUri, "/customers/{0}/cards/{1}"));
         }
+    }
 
+    public static string RecurringPaymentPlans
+    {
+        get { return _recurringPaymentPlanCreateApiUri ?? (_recurringPaymentPlanCreateApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/plans")); }
+    }
 
-      
+    public static string RecurringPaymentPlan
+    {
+        get { return _recurringPaymentPlanApiUri ?? (_recurringPaymentPlanApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/plans/{0}")); }
+    }
+
+    public static string RecurringPaymentPlanSearch
+    {
+        get { return _recurringPaymentPlanSearchApiUri ?? (_recurringPaymentPlanSearchApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/plans/search")); }
+    }
+
+    public static string RecurringCustomerPaymentPlanSearch
+    {
+        get { return _recurringCustomerPaymentPlanSearchApiUri ?? (_recurringCustomerPaymentPlanSearchApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/customers/search")); }
+    }
+
+    public static string RecurringCustomerPaymentPlan
+    {
+        get { return _recurringCustomerPaymentPlanApiUri ?? (_recurringCustomerPaymentPlanApiUri = string.Concat(AppSettings.BaseApiUri, "/recurringPayments/customers/{0}")); }
     }
 }

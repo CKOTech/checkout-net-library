@@ -94,6 +94,7 @@ namespace Checkout.ApiServices.Charges
             return new ApiHttpClient().GetRequest<ChargeHistory>(getChargeHistoryUri, AppSettings.SecretKey);
         }
 
+
         /// <summary>
         /// Retrieves a charge by payment token or chargeId
         /// </summary>

@@ -1,3 +1,4 @@
+using Checkout.ApiServices.RecurringPayments.RequestModels;
 using Checkout.ApiServices.SharedModels;
 using System.Collections.Generic;
 namespace Checkout.ApiServices.Charges.RequestModels

@@ -109,8 +109,25 @@
     <Compile Include="ApiServices\Customers\ResponseModels\CustomerList.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ApiServices\RecurringPayments\RecurringPaymentsService.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\BaseRecurringPlan.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\CustomerPaymentPlan.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\CustomerPaymentPlanCreate.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\CustomerPaymentPlanUpdate.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\PaymentPlan.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\PaymentPlanCreate.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\PaymentPlanUpdate.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\QueryCustomerPaymentPlanRequest.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\QueryPaymentPlanRequest.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\RecurringPlanStatus.cs" />
+    <Compile Include="ApiServices\RecurringPayments\RequestModels\SinglePaymentPlanCreateRequest.cs" />
+    <Compile Include="ApiServices\RecurringPayments\ResponseModels\QueryCustomerPaymentPlanResponse.cs" />
+    <Compile Include="ApiServices\RecurringPayments\ResponseModels\QueryPaymentPlanResponse.cs" />
+    <Compile Include="ApiServices\RecurringPayments\ResponseModels\SinglePaymentPlanCreateResponse.cs" />
     <Compile Include="ApiServices\SharedModels\BasePagination.cs" />
     <Compile Include="ApiServices\SharedModels\BillingDescriptor.cs" />
+    <Compile Include="ApiServices\SharedModels\IQueryRequest.cs" />
+    <Compile Include="ApiServices\SharedModels\IQueryResponse.cs" />
     <Compile Include="ApiServices\SharedModels\Phone.cs" />
     <Compile Include="ApiServices\Tokens\RequestModels\PaymentTokenCreate.cs" />
     <Compile Include="ApiServices\Tokens\ResponseModels\PaymentTokenCreate.cs" />
