@@ -86,6 +86,79 @@ namespace Tests
         }
 
         [Test]
+        public void CreateChargeWithCard_AttemptN3DIsNotSet_CardIsNotEligible()
+        {
+            var cardCreateModel = TestHelper.GetCardChargeCreateModel(TestHelper.RandomData.Email);
+            cardCreateModel.ChargeMode = 2;
+            cardCreateModel.AttemptN3D = false;
+            cardCreateModel.Value = "6900";
+
+            var response = CheckoutClient.ChargeService.ChargeWithCard(cardCreateModel);
+
+            response.Should().NotBeNull();
+            response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
+            response.Model.Id.Should().StartWith("pay_tok");
+            response.Model.ResponseCode.Should().Be("20150"); //card not 3DS enabled
+        }
+
+        [Test]
+        public void CreateChargeWithCard_AttemptN3DIsNotSet_AuthenticationAvailable()
+        {
+            var cardCreateModel = TestHelper.GetCardChargeCreateModel(TestHelper.RandomData.Email);
+            cardCreateModel.ChargeMode = 2;
+            cardCreateModel.AttemptN3D = false;
+
+            var response = CheckoutClient.ChargeService.ChargeWithCard(cardCreateModel);
+
+            response.Should().NotBeNull();
+            response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
+            response.Model.Id.Should().StartWith("pay_tok");
+            response.Model.ResponseCode.Should().NotBeNullOrEmpty();
+            response.Model.ChargeMode.Should().Be(2); //processed as 3DS
+        }
+
+        [Test]
+        public void CreateChargeWithCard_AttemptN3DIsSet_CardIsNotEligible()
+        {
+            var cardCreateModel = TestHelper.GetCardChargeCreateModel(TestHelper.RandomData.Email);
+            cardCreateModel.ChargeMode = 2;
+            cardCreateModel.AttemptN3D = true;
+            cardCreateModel.Value = "6900";
+
+            var response = CheckoutClient.ChargeService.ChargeWithCard(cardCreateModel);
+
+            response.Should().NotBeNull();
+            response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
+            response.Model.Id.Should().StartWith("pay_tok");
+            response.Model.ResponseCode.Should().NotBeNullOrEmpty();
+            response.Model.ChargeMode.Should().Be(1); //downgraded to N3D
+        }
+
+
+        [Test]
+        public void CreateChargeWithCardId_AttemptN3DIsSet_CardIsNotEligible()
+        {
+            var customer = CheckoutClient.CustomerService.CreateCustomer(TestHelper.GetCustomerCreateModelWithCard()).Model;
+
+            var cardIdChargeCreateModel = TestHelper.GetCardIdChargeCreateModel(customer.Cards.Data[0].Id, customer.Email);
+            cardIdChargeCreateModel.ChargeMode = 2;
+            cardIdChargeCreateModel.AttemptN3D = true;
+            cardIdChargeCreateModel.Value = "6900";
+
+            var response = CheckoutClient.ChargeService.ChargeWithCardId(cardIdChargeCreateModel);
+
+            //Check if charge details match
+            response.Should().NotBeNull();
+            response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
+            response.Model.Id.Should().StartWith("pay_tok");
+
+            response.Model.ChargeMode.Should().Be(1); //downgraded to N3D
+            response.Model.RedirectUrl.Should().StartWith("http");
+            response.Model.ResponseCode.Should().NotBeNullOrEmpty();
+            response.Model.TrackId.ShouldBeEquivalentTo(cardIdChargeCreateModel.TrackId);
+        }
+
+        [Test]
         public void CreateChargeWithCardId_3DChargeMode()
         {
             var customer =
