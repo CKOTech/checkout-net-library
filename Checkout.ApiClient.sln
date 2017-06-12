@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.ApiClient.Tests", "Checkout.ApiClient.Tests\Checkout.ApiClient.Tests.csproj", "{EC891A3C-20BF-4AB7-9B39-6C4120F99EB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{048B7D62-8EB9-4D7A-872C-A7FD7AC078F2}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		build.ps1 = build.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{87B87866-14E0-48AB-835B-31B1D155506F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.ApiClient", "Checkout.ApiClient\Checkout.ApiClient.csproj", "{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DebugNet45|Any CPU = DebugNet45|Any CPU
+		Release|Any CPU = Release|Any CPU
+		ReleaseNet45|Any CPU = ReleaseNet45|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC891A3C-20BF-4AB7-9B39-6C4120F99EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC891A3C-20BF-4AB7-9B39-6C4120F99EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC891A3C-20BF-4AB7-9B39-6C4120F99EB2}.DebugNet45|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC891A3C-20BF-4AB7-9B39-6C4120F99EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC891A3C-20BF-4AB7-9B39-6C4120F99EB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC891A3C-20BF-4AB7-9B39-6C4120F99EB2}.ReleaseNet45|Any CPU.ActiveCfg = Release|Any CPU
+		{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}.DebugNet45|Any CPU.ActiveCfg = DebugNet45|Any CPU
+		{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}.DebugNet45|Any CPU.Build.0 = DebugNet45|Any CPU
+		{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}.ReleaseNet45|Any CPU.ActiveCfg = ReleaseNet45|Any CPU
+		{1C69B996-8AB6-4BA2-A5AE-58A350CBB34B}.ReleaseNet45|Any CPU.Build.0 = ReleaseNet45|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

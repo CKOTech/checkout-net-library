@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Checkout.APIClient" Collapsed="true">
+    <Position X="30.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAIAgCCAAAAAgAAAIAAIAAAAIAAAAgAAAAAAAAA=</HashCode>
+      <FileName>APIClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiHttpClient" Collapsed="true">
+    <Position X="32.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAgAQAAEAAEAAAAACEAAAQAAkAAQAAAAAAAAA=</HashCode>
+      <FileName>Helpers\ApiHttpClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.AppSettings" Collapsed="true">
+    <Position X="36" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGAAAAAGIAAAEKCIAAAAAAAAgEAAoAAAAEIAAgAAABA=</HashCode>
+      <FileName>Helpers\AppSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Cards.CardService" Collapsed="true">
+    <Position X="30.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAgQAA=</HashCode>
+      <FileName>ApiServices\Cards\CardService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Cards.RequestModels.BaseCard" Collapsed="true">
+    <Position X="6.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQACAEAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ApiServices\Cards\RequestModels\BaseCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Cards.RequestModels.CardCreate" Collapsed="true">
+    <Position X="5.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ApiServices\Cards\RequestModels\CardCreate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Cards.RequestModels.CardUpdate" Collapsed="true">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ApiServices\Cards\RequestModels\CardUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Cards.ResponseModels.Card" Collapsed="true">
+    <Position X="7.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADgAAAAAAAAAAAAAAQAAAAAAgAIBAAAAAAAAAAQAA=</HashCode>
+      <FileName>ApiServices\Cards\ResponseModels\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Cards.ResponseModels.CardList" Collapsed="true">
+    <Position X="29" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Cards\ResponseModels\CardList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.ChargeService" Collapsed="true">
+    <Position X="34.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAABBCAAAAAAAAAAAIAAAAEAIAAAAQCEAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Charges\ChargeService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.BaseCharge" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAGARAAAAAAAAAAAACAAAARQAAAAoAAAAIAQ=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\BaseCharge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.BaseChargeInfo" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAMAHAAA=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\BaseChargeInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.CardCharge" Collapsed="true">
+    <Position X="15.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\CardCharge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.CardIdCharge" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\CardIdCharge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.CardTokenCharge" Collapsed="true">
+    <Position X="22" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\CardTokenCharge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.ChargeCapture" Collapsed="true">
+    <Position X="26.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAQ=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\ChargeCapture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.ChargeRefund" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAQ=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\ChargeRefund.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.ChargeUpdate" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\ChargeUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.ChargeVoid" Collapsed="true">
+    <Position X="24.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\ChargeVoid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.RequestModels.DefaultCardCharge" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Charges\RequestModels\DefaultCardCharge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.ResponseModels.Capture" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Charges\ResponseModels\Capture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.ResponseModels.Charge" Collapsed="true">
+    <Position X="19.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABCgAAEAAIAAAAQAAAAAAAAAAAAABQAAAAABAAgIAA=</HashCode>
+      <FileName>ApiServices\Charges\ResponseModels\Charge.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.ResponseModels.ChargeHistory" Collapsed="true">
+    <Position X="32.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>ApiServices\Charges\ResponseModels\ChargeHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.ResponseModels.Refund" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Charges\ResponseModels\Refund.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Charges.ResponseModels.Void" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACwAAEAAIAAAAQAAAAAAAACAAAAAQAAAAgBAAAAAQ=</HashCode>
+      <FileName>ApiServices\Charges\ResponseModels\Void.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Customers.CustomerService" Collapsed="true">
+    <Position X="30.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEQAQAAAAAABAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>ApiServices\Customers\CustomerService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Customers.RequestModels.BaseCustomer" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAgAAAAAAAAAAQAAAAAAAAAAAAAIAAEAAA=</HashCode>
+      <FileName>ApiServices\Customers\RequestModels\BaseCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Customers.RequestModels.CustomerCreate" Collapsed="true">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Customers\RequestModels\CustomerCreate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Customers.RequestModels.CustomerGetList" Collapsed="true">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Customers\RequestModels\CustomerGetList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Customers.RequestModels.CustomerUpdate" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Customers\RequestModels\CustomerUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Customers.ResponseModels.Customer" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAQAAAAAAAIAAAAAAQAAAAAAAEAAAA=</HashCode>
+      <FileName>ApiServices\Customers\ResponseModels\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Customers.ResponseModels.CustomerCard" Collapsed="true">
+    <Position X="37.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Customers\ResponseModels\CustomerCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Customers.ResponseModels.CustomerList" Collapsed="true">
+    <Position X="29" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Customers\ResponseModels\CustomerList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Reporting.ReportingService" Collapsed="true">
+    <Position X="37.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Reporting\ReportingService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Reporting.RequestModels.QueryTransaction" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAIAAAAAAAAAAABAAAAAAAAAgAAA=</HashCode>
+      <FileName>ApiServices\Reporting\RequestModels\QueryTransaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Reporting.ResponseModels.GetTransactionList" Collapsed="true">
+    <Position X="37.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAEAAAAAA=</HashCode>
+      <FileName>ApiServices\Reporting\ResponseModels\GetTransactionList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Reporting.ResponseModels.Transaction" Collapsed="true">
+    <Position X="32.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECgAAEAABAAAAQAAAAAACEChAEAAABAQAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Reporting\ResponseModels\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.Address" Collapsed="true">
+    <Position X="29" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAgAAAAAIAAAAAAAAAJAAQAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.BasePagination" Collapsed="true">
+    <Position X="1.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAFAABgAA=</HashCode>
+      <FileName>ApiServices\SharedModels\BasePagination.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.BillingDescriptor" Collapsed="true">
+    <Position X="37.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\BillingDescriptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.Filter" Collapsed="true">
+    <Position X="36" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAoAQ=</HashCode>
+      <FileName>ApiServices\SharedModels\Filter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.HttpResponse&lt;T&gt;" Collapsed="true">
+    <Position X="29" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAIAAgAAAAAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\HttpResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.OkResponse" Collapsed="true">
+    <Position X="30.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\OkResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.Phone" Collapsed="true">
+    <Position X="34.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\Phone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.Product" Collapsed="true">
+    <Position X="36" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAgAACAAAAAAAQAAAAAABAAEAAAgAAAEAA=</HashCode>
+      <FileName>ApiServices\SharedModels\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.SharedModels.ResponseError" Collapsed="true">
+    <Position X="29" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAQAAAAAAAAAAAAgAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\ResponseError.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Tokens.RequestModels.PaymentTokenCreate" Collapsed="true">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Tokens\RequestModels\PaymentTokenCreate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Tokens.RequestModels.PaymentTokenUpdate" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Tokens\RequestModels\PaymentTokenUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Tokens.ResponseModels.PaymentToken" Collapsed="true">
+    <Position X="32.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Tokens\ResponseModels\PaymentTokenCreate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.ApiServices.Tokens.TokenService" Collapsed="true">
+    <Position X="30.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\Tokens\TokenService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiUrls" Collapsed="true">
+    <Position X="34.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAHAABAAAgSAAAgAQAIEUABKBgUYAAgAhiEQBKAACAA=</HashCode>
+      <FileName>Helpers\ApiUrls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.Helpers.ContentAdaptor" Collapsed="true">
+    <Position X="36" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAA=</HashCode>
+      <FileName>Helpers\ContentAdaptor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.Utilities.DateTimeHelper" Collapsed="true">
+    <Position X="32.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Utilities\DateTimeHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.Utilities.ExceptionHelper" Collapsed="true">
+    <Position X="34.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\ExceptionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Checkout.Utilities.UrlHelper" Collapsed="true">
+    <Position X="34.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\UrlHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Checkout.ApiServices.SharedModels.Action" Collapsed="true">
+    <Position X="29" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\Filter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Checkout.ApiServices.SharedModels.Field" Collapsed="true">
+    <Position X="32.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAEACAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\Filter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Checkout.ApiServices.SharedModels.Operator" Collapsed="true">
+    <Position X="34.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAgAAAAAAAAAAAEAAAAAAAAAAQAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\Filter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Checkout.ApiServices.SharedModels.SortColumn" Collapsed="true">
+    <Position X="36" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAEACBAAAAQAAAAAASEChAEAAABAQAAAAAAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\SortColumn.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Checkout.ApiServices.SharedModels.SortOrder" Collapsed="true">
+    <Position X="37.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQAEAAAA=</HashCode>
+      <FileName>ApiServices\SharedModels\SortOrder.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Checkout.Helpers.Environment" Collapsed="true">
+    <Position X="30.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABACA=</HashCode>
+      <FileName>Helpers\Environment.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>Checkout.ApiClient</id>
+			<version>$version$</version>
+			<title>Checkout.ApiClient</title>
+			<authors>Muhsin Meydan</authors>
+			<owners>Checkout.com</owners>
+			<licenseUrl>https://github.com/CKOTech/checkout-net-library/blob/master/LICENSE</licenseUrl>
+			<projectUrl>https://github.com/CKOTech/checkout-net-library</projectUrl>
+			<iconUrl>https://www.checkout.com/wp-content/themes/checkout/favicon.png</iconUrl>
+			<requireLicenseAcceptance>false</requireLicenseAcceptance>
+			<description>Checkout.APIClient is a .net library for Checkout's Merchant API. For documentation, visit https://www.checkout.com/docs/api/API-reference/overview. Git repository available at https://github.com/CKOTech/checkout-net-library</description>
+			<summary>Checkout.APIClient is a .net library for Checkout's Merchant API. For documentation, visit https://www.checkout.com/docs/api/API-reference/overview. Git repository available at https://github.com/CKOTech/checkout-net-library</summary>
+			<releaseNotes />
+			<tags>checkout payment gateway credit card money</tags>
+			<dependencies>
+				<group targetFramework=".NETFramework4.0">
+					<dependency id="Newtonsoft.Json" version="7.0.1" />
+					<dependency id="Microsoft.Net.Http" version="2.2.29" />
+				</group>
+				<group targetFramework=".NETFramework4.5">
+					<dependency id="Newtonsoft.Json" version="7.0.1" />
+				</group>
+			</dependencies>
+    </metadata>
+	<files>
+		<file src="bin\Release\Checkout.dll" target="lib\net40\Checkout.dll" />
+		<file src="bin\ReleaseNet45\Checkout.dll" target="lib\net45\Checkout.dll" />
+	</files>
+</package>
