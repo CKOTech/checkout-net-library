@@ -1,70 +1,245 @@
-# checkout-net-library
+# Checkout .NET Standard Library
 
-### Requirements
+## Target Frameworks
 
-.Net Framework 4.5 and later
+The library targets the following frameworks: 
+* .NET Standard 1.3 or higher
+* .NET Framework 4.5
+* .NET Framework 4.0
 
-### How to use the library
+---
+## How to use the library
 
-In order to use the Checkout .Net library you have two options:
-- Install the library through Nuget. Search for the nuget package name **Checkout.APIClient** and install it.
-- Alternatively, you can download the sourcode from our master branch and reference it in your solution.
+### 1. Installation
+In order to use the Checkout .Net Standard Library you have two options:
+>1. Either install the library through NuGet by searching for the NuGet package name *Checkout.APIClient* and installing it 
+>2. Or download the source code from our [master branch on GitHub](https://github.com/checkout/checkout-net-library/tree/master) and reference it in your solution.
 
-After that add the library namespace **using Checkout;** in your code as below:   
-```
+After that add the library namespace `Checkout` in your code like this:   
+```csharp
 using Checkout;
 ```
 
-if you get class name conflicts please use namespace alias as example below:
-```
+If you get class name conflicts please add a namespace alias as shown below:
+```csharp
 using CheckoutEnvironment = Checkout.Helpers.Environment;
 ```
 
-#### Configuration
-You will be required to **set your secret key** when initialising a new **APIClient** instance. You will also have option for other configurations defined in **AppSettings** of the config file. If you prefer to use config file then you need to have the following configuration in your config file:
+### 2. Configuration
+Before initializing a new instance of the `ApiClient(AppSettings settings)` class, you will be required to **specify the settings**.
+The `AppSettings` object consists of the following settable parameters:
 
-- **Checkout.SecretKey**: This is your api secret key 
-- **Checkout.PublicKey**: This is your api public key 
-- **Checkout.RequestTimeout**: Set your default number of seconds to wait before the request times out on the ApiHttpClient. Default is 60.
-- **Checkout.MaxResponseContentBufferSize**: Sets the maximum number of bytes to buffer when reading the response. Default is 10240.
-- **Checkout.DebugMode**: If set to true, the request and response result will be logged to console. Set this option to false when going Live. Default is false;
-- **Checkout.Environment**: You can set your environment to point to **Sandbox** or **Live**.
+Parameter|Description|Required|Type|Default Value
+:---|---|:---:|---|---
+SecretKey|Your SecretKey is provided to you in The Hub - see [where to find it](https://docs.checkout.com/docs/business-level-administration#section-view-api-keys).|true|`string`|`null`
+PublicKey|Your PublicKey is provided to you in The Hub - see [where to find it](https://docs.checkout.com/docs/business-level-administration#section-view-api-keys).|true|`string`|`null`
+Environment|You may set this to either `Checkout.Helpers.Environment.Sandbox` or `Checkout.Helpers.Environment.Live`.<br /><br />Default is `Checkout.Helpers.Environment.Sandbox`|false|`enum`|`null`
+MaxResponseContentBufferSize|Sets the maximum number of bytes to buffer when reading the response.<br /><br />Default is `10240`.|false|`int`|`10240`
+RequestTimeout|Set your default number of seconds to wait before the request times out on the ApiHttpClient.<br /><br />Default is `60`.|false|`int`| `60`
+DebugMode|If set to `true`, the HttpRequests and HttpResponses will be logged to console. Set this option to `false` when going Live.<br /><br />Default is `false`.|false|`bool`|`false`
 
-```html
-<appSettings>
-    <add key="Checkout.SecretKey" value="sk_test_32b9cb39-1cd6-4f86-b750-7069a133667d" />
-    <add key="Checkout.PublicKey" value="pk_test_2997d616-471e-48a5-ba86-c775ed3ac38a" />
-    <add key="Checkout.RequestTimeout" value="60" />
-    <add key="Checkout.MaxResponseContentBufferSize" value="10240" />
-    <add key="Checkout.DebugMode" value="true" />
-    <add key="Checkout.Environment" value="Sandbox" />
-</appSettings>
-```
-#### Constructor configuration 
-There are many constructors available for configuring the settings programmatically and you only need to do it once. If you provide settings from constructor it will override the matching setting in the config file otherwise the library will be looking for the settings in config file.
-
-```html
-APIClient()
-APIClient(string secretKey, Environment env, bool debugMode, int connectTimeout)
-APIClient(string secretKey, Environment env, bool debugMode)
-APIClient(string secretKey, Environment env)
-APIClient(string secretKey, bool debugMode)
-APIClient(string secretKey)
+E.g. specifying your settings for Sandbox could look like this:
+```csharp
+AppSettings settings = new AppSettings()
+{
+	SecretKey = "sk_test_{your_secret_key}",
+	PublicKey = "pk_test_{your_public_key}",
+	DebugMode = true
+};
 ```
 
-#### Endpoints 
-There are various API endpoints that the **APIClient** interacts with. 
-
-- Charges
-- Customers
-- Cards
-- Tokens
-
-#### Charges
-
-##### Charge with card example
+Then, you can pass the settings to the constructor of the `ApiClient` class ...
+```csharp
+APIClient CheckoutClient = new APIClient(settings);
 ```
-// Create payload
+... and you are set up to be using our various API endpoints.
+
+>Congratulations for installing and configuring the Checkout .NET Standard Library! If you want to learn what's next, continue reading about our API endpoints.
+
+---
+## Endpoints 
+There are various API endpoints that the `APIClient` interacts with.
+>Make sure you visit our [Docs](https://docs.checkout.com/docs/api-quickstart) if you want to learn in more detail about the endpoints and how they interact. There is even full [examples for transaction lifecycles](https://docs.checkout.com/docs/integration-options) and more details about our fully proprietory solutions that are worth checking out.
+
+Supporting Docs:
+- [Codes](https://docs.checkout.com/docs/codes)
+
+---
+## API Methods
+
+Each Endpoint has its own Service and each Service respectively contains methods.
+
+Endpoint|Service
+---|---
+Cards|`CardService`
+Charges|`ChargeService`
+Customers|`CustomerService`
+Lookups|`LookupsService`
+PaymentTokens|`TokenService`
+RecurringPayments|`RecurringPaymentsService`
+Reporting|`ReportingService`
+
+> After initializing the `APIClient`, you can make any API Calls by simply writing `{APIClient_instance}.{Service}.{Method}`. Every API Call is a RESTful HttpRequest that returns an HttpResponse<T> with a corresponding Generic Type Object. The properties of the Generic Type Object are accessible through the HttpResponse<T\>.Model property.
+>
+> Have a look at this example:
+>```csharp
+>// Adding the Checkout namespace
+>using Checkout;
+>
+>// Creating an instance of AppSettings with configurations for Sandbox
+>AppSettings sandbox_settings = new AppSettings()
+>{
+>	SecretKey = "sk_test_{your_secret_key}",
+>	PublicKey = "pk_test_{your_public_key}",
+>	DebugMode = true
+>};
+>
+>try
+>{
+>	// Initializing the APIClient using the Sandbox settings
+>	APIClient CheckoutClient = new APIClient(sandbox_settings);
+>
+>	// Making an API Call to find details about the bank with Bank Identification Number (BIN) 465945
+>	string bin = "465945";
+>	HttpResponse<CountryInfo> response = CheckoutClient.LookupService.GetBinLookup(bin);
+>
+>	// Any HttpResponse has a public "Model" property that gives access to the underlying properties of the returned Generic Type - here: CountryInfo
+>	Console.WriteLine(response.Model.Bin);
+>	Console.WriteLine(response.Model.IssuerCountryISO2);
+>	Console.WriteLine(response.Model.CountryName);
+>	Console.WriteLine(response.Model.BankName);
+>	Console.WriteLine(response.Model.CardScheme);
+>	Console.WriteLine(response.Model.CardType);
+>	Console.WriteLine(response.Model.CardCategory);
+>
+>	/* Output to the console:
+>	"465945"
+>	"GB"
+>	"United Kingdom"
+>	"HSBC BANK PLC"
+>	"Visa"
+>	"Debit"
+>	"Consumer"
+>	*/
+>}
+>catch (Exception e)
+>{
+>	// ... Handle exception
+>}
+>```
+
+### Available methods and their respective return types:
+
+### CardService
+Method|HttpResponse<{__GenericTypeParameter__}>
+---|---:
+`CreateCard(string customerId, CardCreate requestModel)`|`Card`
+`GetCard(string customerId, string cardId)`|`Card`
+`UpdateCard(string customerId, string cardId, CardUpdate requestModel)`|`OkResponse`
+`DeleteCard(string customerId, string cardId)`|`OkResponse`
+`GetCardList(string customerId)`|`CardList`
+
+<br />
+<br />
+
+### ChargeService
+Method|HttpResponse<{__GenericTypeParameter__}>
+---|---:
+`ChargeWithCard(CardCharge requestModel)`|`Charge`
+`ChargeWithCardId(CardIdCharge requestModel)`|`Charge`
+`ChargeWithCardToken(CardTokenCharge requestModel)`|`Charge`
+`ChargeWithDefaultCustomerCard(DefaultCardCharge requestModel)`|`Charge`
+`ChargeWithLocalPayment(LocalPaymentCharge requestModel)`|`Charge`
+`VoidCharge(string chargeId, ChargeVoid requestModel)`|`Void`
+`RefundCharge(string chargeId, ChargeRefund requestModel)`|`Refund`
+`CaptureCharge(string chargeId, ChargeCapture requestModel)`|`Capture`
+`UpdateCharge(string chargeId, ChargeUpdate requestModel)`|`OkResponse`
+`GetCharge(string chargeId)`|`Charge`
+`GetChargeHistory(string chargeId)`|`ChargeHistory`
+`VerifyCharge(string paymentToken)`|`Charge`
+
+<br />
+<br />
+
+### CustomerService
+Method|HttpResponse<{__GenericTypeParameter__}>
+---|---:
+`CreateCustomer(CustomerCreate requestModel)`|`Customer`
+`UpdateCustomer(string customerId, CustomerUpdate requestModel)`|`OkResponse`
+`DeleteCustomer(string customerId)`|`OkResponse`
+`GetCustomer(string identifier)` - identifier being either customerId or customerEmail|`Customer`
+`GetCustomerList(CustomerGetList request)`|`CustomerList`
+
+<br />
+<br />
+
+### LookupsService
+Method|HttpResponse<{__GenericTypeParameter__}>
+---|---:
+`GetBinLookup(string bin)`|`CountryInfo`
+`GetLocalPaymentIssuerIds(string lppId)`|`LocalPaymentData`
+
+<br />
+<br />
+
+### PayoutsService
+Method|HttpResponse<{__GenericTypeParameter__}>
+---|---:
+`MakePayout(BasePayout requestModel)`|`Payout`
+
+<br />
+<br />
+
+### RecurringPaymentsService
+Method|HttpResponse<{__GenericTypeParameter__}>
+---|---:
+`CreatePaymentPlan(SinglePaymentPlanCreateRequest requestModel)`|`SinglePaymentPlanCreateResponse`
+`UpdatePaymentPlan(string planId, PaymentPlanUpdate requestModel)`|`OkResponse`
+`CancelPaymentPlan(string planId)`|`OkResponse`
+`GetPaymentPlan(string planId)`|`PaymentPlan`
+`QueryPaymentPlan(QueryPaymentPlanRequest requestModel)`|`QueryPaymentPlanResponse`
+`QueryCustomerPaymentPlan(QueryCustomerPaymentPlanRequest requestModel)`|`QueryCustomerPaymentPlanResponse`
+`GetCustomerPaymentPlan(string customerPlanId)`|`CustomerPaymentPlan`
+`CancelCustomerPaymentPlan(string customerPlanId)`|`OkResponse`
+`UpdateCustomerPaymentPlan(string customerPlanId, CustomerPaymentPlanUpdate requestModel)`|`OkResponse`
+
+<br />
+<br />
+
+### ReportingService
+Method|HttpResponse<{__GenericTypeParameter__}>
+---|---:
+`QueryTransaction(QueryRequest requestModel)`|`QueryTransactionResponse`
+`QueryChargeback(QueryRequest requestModel)`|`QueryChargebackResponse`
+
+<br />
+<br />
+
+### TokenService
+Method|HttpResponse<{__GenericTypeParameter__}>
+---|---:
+`CreatePaymentToken(PaymentTokenCreate requestModel)`|`PaymentToken`
+`UpdatePaymentToken(string paymentToken, PaymentTokenUpdate requestModel)`|`OkResponse`
+`CreateVisaCheckoutCardToken(VisaCheckoutTokenCreate requestModel)`|`CardTokenResponse`
+`GetCardToken(TokenCard requestModel)`|`CardTokenCreate`
+
+<br />
+<br />
+
+---
+
+## Examples
+
+Have a look at a few more examples. More detailed information on various Models to be passed in the API Methods are available in our [Merchant API Reference](https://docs.checkout.com/docs/additional-apis). It is assumed that you already have instantiated your `APIClient`.
+
+### Charges
+
+#### Charge with full Card Details (PCI compliant merchants only)
+- API Method: `ChargeWithCard(CardCharge requestModel)`
+- requires: `CardCharge requestModel`
+
+```csharp
+// Create CardCharge requestModel
 var cardChargeRequestModel = new CardCharge()
 {
 	Email = "myEmail@hotmail.com",
@@ -100,13 +275,14 @@ var cardChargeRequestModel = new CardCharge()
 	},
 	Products = new List<Product>(){
 		new Product{ 
-			Name="ipad 3", 
-			Price=100, 
-			Quantity=1, 
-			ShippingCost=10.5M, 
-			Description="Gold edition", 
-			Image="http://goofle.com/?id=12345", 
-			Sku="TR12345", TrackingUrl="http://tracket.com?id=123456"
+			Name = "iPad 3", 
+			Price = 100, 
+			Quantity = 1, 
+			ShippingCost = 10.5, 
+			Description = "Gold edition", 
+			Image = "http://goofle.com/?id=12345", 
+			Sku = "TR12345",
+			TrackingUrl = "http://tracket.com?id=123456"
 		}
 	},
 	ShippingDetails = new Address()
@@ -123,7 +299,10 @@ var cardChargeRequestModel = new CardCharge()
 			Number = "203 583 44 55"
 		}
 	},
-	Metadata = new Dictionary<string, string>() { { "extraInformation", "EBS travel" } },
+	Metadata = new Dictionary<string, string>()
+	{
+		{ "extraInformation", "EBS travel" }
+	},
 	Udf1 = "udf1 string",
 	Udf2 = "udf2 string",
 	Udf3 = "udf3 string",
@@ -133,115 +312,33 @@ var cardChargeRequestModel = new CardCharge()
 
 try
 {
-	// Create APIClient instance with your secret key
-	APIClient ckoAPIClient = new APIClient("sk_test_32b9cb39-1cd6-4f86-b750-7069a133667d", Checkout.APIClient.Helpers.Environment.Sandbox);
+	// Submit your request and receive a response from the API Endpoint
+	HttpResponse<Charge> response = CheckoutClient.ChargeService.ChargeWithCard(cardChargeRequestModel);
 
-	// Submit your request and receive an apiResponse
-	HttpResponse<Charge> apiResponse = ckoAPIClient.ChargeService.ChargeWithCard(cardChargeRequestModel);
-
-	if (!apiResponse.HasError)
+	if (!response.HasError)
 	{
-		// Access the response object retrieved from the api
-		var charge = apiResponse.Model;
+		// Access the response object retrieved from the API
+		var charge = response.Model;
+		// ... Do stuff
 	}
 	else
 	{
-		// Api has returned an error object. You can access the details in the error property of the apiResponse.
-		// apiResponse.error
+		// API has returned an error object. You can access the details in the error property of the response.
+		// response.error
+		// ... Handle error
 	}
 }
 catch (Exception e)
 {
-	//... Handle exception
+	// ... Handle exception
 }
 ```
 
-##### Charge with card token example
-```
-// Create payload
-var cardChargeRequestModel = new CardTokenCharge()
-{
-	Email = "myEmail@hotmail.com",
-	AutoCapture = "Y",
-	AutoCapTime = 0,
-	Currency = "Usd",
-	TrackId = "TRK12345",
-	TransactionIndicator = "1",
-	CustomerIp = "82.23.168.254",
-	Description = "Ipad for Ebs travel",
-	Value = "100",
-	CardToken = "card_tok_************************************",
-	Products = new List<Product>(){
-		new Product{ 
-			Name="ipad 3", 
-			Price=100, 
-			Quantity=1, 
-			ShippingCost=10.5M, 
-			Description="Gold edition", 
-			Image="http://goofle.com/?id=12345", 
-			Sku="TR12345", TrackingUrl="http://tracket.com?id=123456"
-		}
-	},
-	ShippingDetails = new Address()
-	{
-		AddressLine1 = "Flat 1",
-		AddressLine2 = "Glading Fields",
-		Postcode = "N16 2BR",
-		City = "London",
-		State = "Hackney",
-		Country = "GB",
-		Phone = new Phone()
-		{
-			CountryCode = "44",
-			Number = "203 583 44 55"
-		}
-	},
-	BillingDetails = new Address()
-	{
-		AddressLine1 = "Flat 42",
-		AddressLine2 = "Oxford Street",
-		Postcode = "W1W 8SY",
-		City = "London",
-		State = "London",
-		Country = "GB"
-	},
-	Metadata = new Dictionary<string, string>() { { "extraInformation", "EBS travel" } },
-	Udf1 = "udf1 string",
-	Udf2 = "udf2 string",
-	Udf3 = "udf3 string",
-	Udf4 = "udf4 string",
-	Udf5 = "udf5 string"
-};
+### Customers
 
-try
-{
-	// Create APIClient instance with your secret key
-	APIClient ckoAPIClient = new APIClient("sk_test_32b9cb39-1cd6-4f86-b750-7069a133667d", Checkout.APIClient.Helpers.Environment.Sandbox);
+#### Create customer with card example
 
-	// Submit your request and receive an apiResponse
-	HttpResponse<Charge> apiResponse = ckoAPIClient.ChargeService.ChargeWithCardToken(cardChargeRequestModel);
-
-	if (!apiResponse.HasError)
-	{
-		// Access the response object retrieved from the api
-		var charge = apiResponse.Model;
-	}
-	else
-	{
-		// Api has returned an error object. You can access the details in the error property of the apiResponse.
-		// apiResponse.error
-	}
-}
-catch (Exception e)
-{
-	//... Handle exception
-}
-```
-
-
-#### Customers
-##### Create customer with card example
-```
+```csharp
 // Create payload
 var customerCreateRequest = new CustomerCreate()
 {
@@ -305,7 +402,7 @@ catch (Exception e)
 
 #### Cards
 ##### Create card
-```
+```csharp
 // Create payload
 var cardCreateRequest = new CardCreate()
 {
@@ -359,7 +456,7 @@ catch (Exception e)
 #### Tokens
 ##### Create payment token example
 
-```
+```csharp
 // Create payload
 var paymentTokenRequest = new PaymentTokenCreate()
   {
@@ -432,7 +529,7 @@ catch (Exception e)
 
 ##### Verify charge example
 
-```
+```csharp
 // Create payload
 string paymentToken = "pay_tok_e6ef69d3-11b2-473d-bdc0-6b03c8713454";
 
@@ -461,11 +558,17 @@ catch (Exception e)
 	//... Handle exception
 }
 ```
+---
+## Debug Mode
 
-### Debug Mode
+If you enable the debug mode the HttpRequests and HttpResponses will be logged to console. Set this option to `false` when going Live. Default is `false`.
 
-If you enable debug mode by setting the **Checkout.DebugMode** to true in the config file or in code all the http requests and responses will be logged in the console.   
+---
+## Build
 
-### Unit Tests
+To build the library from source, .NET Framework 4.6.1 or later is required. 
 
-All the unit test written with NUnit and resides in the test project.
+---
+## Tests
+
+All the tests are written with NUnit and reside in the `*.Tests` projects.

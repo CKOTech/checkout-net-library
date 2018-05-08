@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <!-- common NuGet package references that affect all projects -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;net45;net40</TargetFrameworks>
+    <AssemblyName>Checkout</AssemblyName>
+    <RootNamespace>Checkout</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageId>Checkout.APIClient</PackageId>
+    <PackageVersion>2.0.0</PackageVersion>
+    <Authors>Checkout.com Integration Team</Authors>
+    <Title>Checkout.APIClient</Title>
+    <Description>
+      API wrapper for the Checkout.com Payment Gateway
+      Docs: https://docs.checkout.com/docs/api-quickstart
+      GitHub: https://github.com/checkout/checkout-net-library
+    </Description>
+    <Copyright>Copyright (c) 2018 Checkout.com</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/checkout/checkout-net-library/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/checkout/checkout-net-library</PackageProjectUrl>
+    <PackageIconUri>https://www.checkout.com/static/favicons/favicon-32x32.png</PackageIconUri>
+    <PackageTags>payment; card; gateway; checkout; credit; money</PackageTags>
+    <PackageReleaseNotes>Porting Checkout.APIClient to .NET Standard 1.3 targeting .NET Standard 1.3, .NET 4.5 and .NET 4.0</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/checkout/checkout-net-library.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryBranch>master</RepositoryBranch>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <!-- .NET Standard 1.3 references, compilation flags and build options -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <DefineConstants>NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <!-- .NET 4.0 and 4.5 references, compilation flags and build options -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net40'">
+    <DefineConstant>NET40</DefineConstant>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net45'">
+    <DefineConstant>NET45</DefineConstant>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40' or '$(TargetFramework)' == 'net45'">
+    <PackageReference Include="NETStandard.Library" Version="2.0.1" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <!-- .NET 4.0 references, compilation flags and build options -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
+    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
+  </ItemGroup>
+</Project>

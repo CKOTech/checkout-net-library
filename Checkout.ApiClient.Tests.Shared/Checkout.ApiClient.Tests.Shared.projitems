@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>4f83ba8f-27f3-4cd9-b2dc-fb84a6566764</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Checkout.ApiClient.Tests.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CardService\CardServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ChargeService\ChargeServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomerService\CustomerServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ErrorResponse\ErrorResponseTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LookupsService\LookupsServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PayoutsService\PayoutsServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RecurringPaymentsService\RecurringPaymentsServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ReportingService\ReportingServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TokenService\TokenServiceTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\CardProviders.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\RandomData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ReflectionHelper.cs" />
+  </ItemGroup>
+</Project>
