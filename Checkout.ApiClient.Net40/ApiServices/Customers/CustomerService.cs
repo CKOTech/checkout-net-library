@@ -24,7 +24,7 @@ public class CustomerService  {
         return new ApiHttpClient().DeleteRequest<OkResponse>(deleteCustomerUri, AppSettings.SecretKey);
     }
 
-    public HttpResponse<Customer> GetCustomerById(string customerId)
+    public HttpResponse<Customer> GetCustomer(string customerId)
     {
         var getCustomerUri = string.Format(ApiUrls.Customer, customerId);
         return new ApiHttpClient().GetRequest<Customer>(getCustomerUri, AppSettings.SecretKey);

@@ -54,7 +54,7 @@ namespace Tests
             var customerCreateModel = TestHelper.GetCustomerCreateModelWithCard();
             var customer = CheckoutClient.CustomerService.CreateCustomer(customerCreateModel).Model;
 
-            var response = CheckoutClient.CustomerService.GetCustomerById(customer.Id);
+            var response = CheckoutClient.CustomerService.GetCustomer(customer.Id);
 
             response.Should().NotBeNull();
             response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
