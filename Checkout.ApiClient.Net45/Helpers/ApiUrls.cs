@@ -133,6 +133,9 @@
         public static string Customer
             => _customerApiUri ?? (_customerApiUri = string.Concat(AppSettings.BaseApiUri, "/customers/{0}"));
 
+        public static string CustomerByEmail
+            => _customerApiUri ?? (_customerApiUri = string.Concat(AppSettings.BaseApiUri, "/customers?email={0}"));
+
         public static string Cards
             => _cardsApiUri ?? (_cardsApiUri = string.Concat(AppSettings.BaseApiUri, "/customers/{0}/cards"));
 

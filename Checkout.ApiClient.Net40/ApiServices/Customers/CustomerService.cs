@@ -30,7 +30,12 @@ public class CustomerService  {
         return new ApiHttpClient().GetRequest<Customer>(getCustomerUri, AppSettings.SecretKey);
     }
 
-    public HttpResponse<CustomerList> GetCustomerList(CustomerGetList request)
+        public HttpResponse<Customer> GetCustomerByEmail(string customerEmail)
+        {
+            var getCustomerUri = string.Format(ApiUrls.CustomerByEmail, customerEmail);
+            return new ApiHttpClient().GetRequest<Customer>(getCustomerUri, AppSettings.SecretKey);
+        }
+        public HttpResponse<CustomerList> GetCustomerList(CustomerGetList request)
     {
         var getCustomerListUri = ApiUrls.Customers;
 
