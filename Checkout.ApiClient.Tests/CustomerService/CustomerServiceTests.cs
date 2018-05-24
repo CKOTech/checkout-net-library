@@ -49,12 +49,27 @@ namespace Tests
         }
 
         [Test]
-        public void GetCustomer()
+        public void GetCustomerById()
         {
             var customerCreateModel = TestHelper.GetCustomerCreateModelWithCard();
             var customer = CheckoutClient.CustomerService.CreateCustomer(customerCreateModel).Model;
 
-            var response = CheckoutClient.CustomerService.GetCustomer(customer.Id);
+            var response = CheckoutClient.CustomerService.GetCustomerById(customer.Id);
+
+            response.Should().NotBeNull();
+            response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
+            response.Model.Id.Should().Be(customer.Id);
+            response.Model.Id.Should().StartWith("cust_");
+            customer.ShouldBeEquivalentTo(response.Model);
+        }
+
+        [Test]
+        public void GetCustomerByEmail()
+        {
+            var customerCreateModel = TestHelper.GetCustomerCreateModelWithCard();
+            var customer = CheckoutClient.CustomerService.CreateCustomer(customerCreateModel).Model;
+
+            var response = CheckoutClient.CustomerService.GetCustomerByEmail(customer.Email);
 
             response.Should().NotBeNull();
             response.HttpStatusCode.Should().Be(HttpStatusCode.OK);

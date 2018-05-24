@@ -24,13 +24,18 @@ public class CustomerService  {
         return new ApiHttpClient().DeleteRequest<OkResponse>(deleteCustomerUri, AppSettings.SecretKey);
     }
 
-    public HttpResponse<Customer> GetCustomer(string customerId)
+    public HttpResponse<Customer> GetCustomerById(string customerId)
     {
         var getCustomerUri = string.Format(ApiUrls.Customer, customerId);
         return new ApiHttpClient().GetRequest<Customer>(getCustomerUri, AppSettings.SecretKey);
     }
 
-    public HttpResponse<CustomerList> GetCustomerList(CustomerGetList request)
+        public HttpResponse<Customer> GetCustomerByEmail(string customerEmail)
+        {
+            var getCustomerUri = string.Format(ApiUrls.CustomerByEmail, customerEmail);
+            return new ApiHttpClient().GetRequest<Customer>(getCustomerUri, AppSettings.SecretKey);
+        }
+        public HttpResponse<CustomerList> GetCustomerList(CustomerGetList request)
     {
         var getCustomerListUri = ApiUrls.Customers;
 

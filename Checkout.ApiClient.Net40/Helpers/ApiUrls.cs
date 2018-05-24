@@ -200,6 +200,14 @@
             }
         }
 
+        public static string CustomerByEmail
+        {
+            get
+            {
+                return _customerApiUri ?? (_customerApiUri = string.Concat(AppSettings.BaseApiUri, "/customers?email={0}"));
+            }
+        }
+
         public static string Cards
         {
             get
