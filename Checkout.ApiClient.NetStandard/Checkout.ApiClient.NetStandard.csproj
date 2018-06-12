@@ -2,12 +2,12 @@
   
   <!-- common NuGet package references that affect all projects -->
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45;net40</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
     <AssemblyName>Checkout</AssemblyName>
     <RootNamespace>Checkout</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageId>Checkout.APIClient</PackageId>
-    <PackageVersion>2.1.0</PackageVersion>
+    <PackageVersion>2.2.0</PackageVersion>
     <Authors>Checkout.com Integration Team</Authors>
     <Title>Checkout.APIClient</Title>
     <Description>
@@ -32,19 +32,14 @@
 
   <!-- .NET Standard 1.3 references, compilation flags and build options -->
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
-    <DefineConstants>NETSTANDARD</DefineConstants>
-  </PropertyGroup>
-
-  <!-- .NET 4.0 and 4.5 references, compilation flags and build options -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net40'">
-    <DefineConstant>NET40</DefineConstant>
+    <DefineConstant>NETSTANDARD</DefineConstant>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net45'">
     <DefineConstant>NET45</DefineConstant>
   </PropertyGroup>
   
-  <ItemGroup Condition="'$(TargetFramework)' == 'net40' or '$(TargetFramework)' == 'net45'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
     <PackageReference Include="NETStandard.Library" Version="2.0.1" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -60,8 +55,4 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
-  <!-- .NET 4.0 references, compilation flags and build options -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
-  </ItemGroup>
 </Project>

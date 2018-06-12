@@ -12,6 +12,7 @@ namespace Checkout
     public interface IApiClient
     {
         IApiHttpClient ApiHttpClient { get; }
+
         ICardService CardService { get; }
         IChargeService ChargeService { get; }
         ICustomerService CustomerService { get; }

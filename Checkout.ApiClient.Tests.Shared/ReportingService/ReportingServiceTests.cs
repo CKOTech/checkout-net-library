@@ -298,7 +298,7 @@ namespace Tests
             var request = TestHelper.GetQueryRequest(new List<Filter> {filter});
             var firstQueryResponse = CheckoutClient.ReportingService.QueryTransaction(request);
 
-#region Assert First Query Response
+            #region Assert First Query Response
 
             firstQueryResponse.Should().NotBeNull();
 
@@ -326,7 +326,7 @@ namespace Tests
                 firstQueryResponse.HasError.Should().BeTrue();
             }
 
-#endregion Assert First Query Response
+            #endregion Assert First Query Response
 
             // capture charge and query 2nd time
             var chargeCapture = TestHelper.GetChargeCaptureModel(charge.Value);
@@ -338,7 +338,7 @@ namespace Tests
 
             var secondQueryResponse = CheckoutClient.ReportingService.QueryTransaction(request);
 
-#region Assert Second Query Response
+            #region Assert Second Query Response
 
             secondQueryResponse.Should().NotBeNull();
 

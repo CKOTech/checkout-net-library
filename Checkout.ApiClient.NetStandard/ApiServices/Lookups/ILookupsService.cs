@@ -1,6 +1,5 @@
 ﻿using Checkout.ApiServices.Lookups.ResponseModels;
 using Checkout.ApiServices.SharedModels;
-
 namespace Checkout.ApiServices.Lookups
 {
     public interface ILookupsService

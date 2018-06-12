@@ -6,31 +6,21 @@ namespace Checkout.ApiServices.Reporting
 {
     public class ReportingService : IReportingService
     {
-        private IApiHttpClient _apiHttpClient;
-        private CheckoutConfiguration _configuration;
+        private IReportingServiceAsync _reportingServiceAsync;
+
         public ReportingService(IApiHttpClient apiHttpclient, CheckoutConfiguration configuration)
         {
-            _apiHttpClient = apiHttpclient;
-            _configuration = configuration;
-        }
-        /// <summary>
-        /// Search for a customer’s transaction by a date range and then drill down using further filters.
-        /// </summary>
-        /// <param name="requestModel"></param>
-        /// <returns></returns>
-        public HttpResponse<QueryTransactionResponse> QueryTransaction(QueryRequest requestModel)
-        {
-            return _apiHttpClient.PostRequest<QueryTransactionResponse>(_configuration.ApiUrls.ReportingTransactions, _configuration.SecretKey, requestModel);
+            _reportingServiceAsync = new ReportingServiceAsync(apiHttpclient, configuration);
         }
 
-        /// <summary>
-        /// Search for a customer’s chargebacks by a date range and then drill down using further filters.
-        /// </summary>
-        /// <param name="requestModel"></param>
-        /// <returns></returns>
+        public HttpResponse<QueryTransactionResponse> QueryTransaction(QueryRequest requestModel)
+        {
+            return _reportingServiceAsync.QueryTransactionAsync(requestModel).Result;
+        }
+
         public HttpResponse<QueryChargebackResponse> QueryChargeback(QueryRequest requestModel)
         {
-            return _apiHttpClient.PostRequest<QueryChargebackResponse>(_configuration.ApiUrls.ReportingChargebacks, _configuration.SecretKey, requestModel);
+            return _reportingServiceAsync.QueryChargebackAsync(requestModel).Result;
         }
     }
 }

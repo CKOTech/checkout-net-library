@@ -23,11 +23,8 @@ namespace Checkout
     public sealed class ApiHttpClient : IApiHttpClient
     {
         public CheckoutConfiguration configuration;
-#if (NET40)
-        private WebRequestHandler requestHandler;
-#elif (NET45 || NETSTANDARD)
         private HttpClientHandler requestHandler;
-#endif
+
         private HttpClient httpClient;
 
         public ApiHttpClient(CheckoutConfiguration configuration)
@@ -42,11 +39,8 @@ namespace Checkout
             {
                 requestHandler.Dispose();
             }
-#if (NET40)
-            requestHandler = new WebRequestHandler
-#elif (NET45 || NETSTANDARD)
+
             requestHandler = new HttpClientHandler
-#endif
             {
                 AutomaticDecompression = DecompressionMethods.GZip,
                 AllowAutoRedirect = false,
@@ -94,7 +88,7 @@ namespace Checkout
         /// <summary>
         /// Submits a get request to the given web address with default content type e.g. text/plain
         /// </summary>
-        public HttpResponse<T> GetRequest<T>(string requestUri, string authenticationKey, [CallerMemberName] string callerFunction = "")
+        public Task<HttpResponse<T>> GetRequest<T>(string requestUri, string authenticationKey, [CallerMemberName] string callerFunction = "")
         {
             var httpRequestMsg = new HttpRequestMessage
             {
@@ -112,7 +106,7 @@ namespace Checkout
         /// <summary>
         /// Submits a post request to the given web address
         /// </summary>
-        public HttpResponse<T> PostRequest<T>(string requestUri, string authenticationKey, object requestPayload = null, [CallerMemberName] string callerFunction = "")
+        public Task<HttpResponse<T>> PostRequest<T>(string requestUri, string authenticationKey, object requestPayload = null, [CallerMemberName] string callerFunction = "")
         {
             var httpRequestMsg = new HttpRequestMessage(HttpMethod.Post, requestUri);
             var requestPayloadAsString = GetObjectAsString(requestPayload);
@@ -129,7 +123,7 @@ namespace Checkout
         /// <summary>
         /// Submits a put request to the given web address
         /// </summary>
-        public HttpResponse<T> PutRequest<T>(string requestUri, string authenticationKey, object requestPayload = null, [CallerMemberName] string callerFunction = "")
+        public Task<HttpResponse<T>> PutRequest<T>(string requestUri, string authenticationKey, object requestPayload = null, [CallerMemberName] string callerFunction = "")
         {
             var httpRequestMsg = new HttpRequestMessage(HttpMethod.Put, requestUri);
             var requestPayloadAsString = GetObjectAsString(requestPayload);
@@ -146,7 +140,7 @@ namespace Checkout
         /// <summary>
         /// Submits a delete request to the given web address
         /// </summary>
-        public HttpResponse<T> DeleteRequest<T>(string requestUri, string authenticationKey, [CallerMemberName] string callerFunction = "")
+        public Task<HttpResponse<T>> DeleteRequest<T>(string requestUri, string authenticationKey, [CallerMemberName] string callerFunction = "")
         {
             var httpRequestMsg = new HttpRequestMessage
             {
@@ -167,7 +161,7 @@ namespace Checkout
         /// <param name="request"></param>
         /// <returns></returns>
 
-        private HttpResponse<T> SendRequest<T>(HttpRequestMessage request, string payload = null)
+        private async Task<HttpResponse<T>> SendRequest<T>(HttpRequestMessage request, string payload = null)
         {
             HttpResponse<T> response = null;
             HttpResponseMessage responseMessage = null;
@@ -176,16 +170,14 @@ namespace Checkout
 
             try
             {
-#if NET40
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
-#elif NET45 
+#if NET45 
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 #endif
-                responseMessage = httpClient.SendAsync(request).Result;
+                responseMessage = await httpClient.SendAsync(request);
 
                 responseCode = responseMessage.StatusCode.ToString();
 
-                var responseContent = responseMessage.Content.ReadAsByteArrayAsync().Result;
+                var responseContent = await responseMessage.Content.ReadAsByteArrayAsync();
 
                 if (responseContent != null && responseContent.Length > 0)
                 {

@@ -27,8 +27,8 @@ namespace Checkout
         public ApiClient(CheckoutConfiguration configuration)
         {
             CheckoutConfiguration = configuration;
-
             ApiHttpClient = new ApiHttpClient(CheckoutConfiguration);
+
             CardService = new CardService(ApiHttpClient, CheckoutConfiguration);
             ChargeService = new ChargeService(ApiHttpClient, CheckoutConfiguration);
             CustomerService = new CustomerService(ApiHttpClient, CheckoutConfiguration);
@@ -44,8 +44,8 @@ namespace Checkout
         public ApiClient(CheckoutConfiguration configuration, IApiHttpClient httpClient)
         {
             CheckoutConfiguration = configuration;
-
             ApiHttpClient = httpClient;
+
             CardService = new CardService(ApiHttpClient, CheckoutConfiguration);
             ChargeService = new ChargeService(ApiHttpClient, CheckoutConfiguration);
             CustomerService = new CustomerService(ApiHttpClient, CheckoutConfiguration);
