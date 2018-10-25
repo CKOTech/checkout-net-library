@@ -242,7 +242,7 @@ namespace Tests
             return new TokenCard()
             {
                 ExpiryMonth = "06",
-                ExpiryYear = "2018",
+                ExpiryYear = "2022",
                 Number = "4242424242424242",
                 Cvv = "100"
             };
@@ -255,7 +255,7 @@ namespace Tests
                 return new BaseCard()
                 {
                     ExpiryMonth = "06",
-                    ExpiryYear = "2018",
+                    ExpiryYear = "2022",
                     Name = RandomData.FullName,
                     BillingDetails = GetAddressModel()
                 };

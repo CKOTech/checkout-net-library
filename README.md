@@ -24,7 +24,7 @@ In order to use the Checkout.com .NET Standard Library you have two installation
 ## Initial Setup
 
 ### Pre Requirements
-- [![PCI Logo][pcilogo]](https://www.pcisecuritystandards.org/) It is a requirement that all Checkout.com merchants validate their *PCI DSS* (**P**ayment **C**ard **I**ndustry **D**ata **S**ecurity **S**tandard) compliance annually. Details about your required level of compliance depend on the Checkout.com solution you want to use. [Read on in our Docs](https://docs.checkout.com/docs/pci-compliance#section-validate-your-pci-compliance) for the details. The [*PCI Security Standard Council*](https://www.pcisecuritystandards.org/) maintains, evolves and promotes the *PCI DSS*.
+- [![PCI Logo](/img/pci_logo.png (PCI Security Standard Council \(R\)))](https://www.pcisecuritystandards.org/) It is a requirement that all Checkout.com merchants validate their *PCI DSS* (**P**ayment **C**ard **I**ndustry **D**ata **S**ecurity **S**tandard) compliance annually. Details about your required level of compliance depend on the Checkout.com solution you want to use. [Read on in our Docs](https://docs.checkout.com/docs/pci-compliance#section-validate-your-pci-compliance) for the details. The [*PCI Security Standard Council*](https://www.pcisecuritystandards.org/) maintains, evolves and promotes the *PCI DSS*.
 - Before using the *Checkout.ApiClient* SDK, you require your *Secret Key* that you can get [here](https://docs.checkout.com/docs/business-level-administration#section-view-api-keys) from your Merchant Account a.k.a *The Hub*;
   > If you do not have access to *The Hub* yet, simply go to https://checkout.com and click the "Get Sandbox" button to create a Sandbox Account.
 - You have the *Checkout.ApiClient* SDK installed either from [NuGet](https://www.nuget.org/packages/Checkout.APIClient/) or from our [master branch on GitHub](https://github.com/checkout/checkout-net-library/tree/master) and you have referenced it in your project.
@@ -132,5 +132,3 @@ For help during the integration process you can contact us at integration@checko
 For support, you can contact us at support@checkout.com
 
 *Checkout.com is authorised and regulated as a Payment institution by the UK Financial Conduct Authority.*
-
-[pcilogo]: https://www.pcisecuritystandards.org/touch-icon-iphone.png (PCI Security Standard Council \(R\))

@@ -13,6 +13,20 @@ Starting with version 2.0.0 this project adheres to [Semantic Versioning](http:/
 
 <br />
 
+## 2.2.5 (2018-10-25)
+
+### Bug Fixes
+- **added** `ConfigureAwait(false)` to prevent a potential deadlock on the async thread
+
+<br />
+
+## 2.2.4 (2018-08-16)
+
+### Features
+- **added** method `GetTokenDetails()` / `GetTokenDetailsAsync()` to the Lookups Service
+
+<br />
+
 ## 2.2.3 (2018-07-03)
 
 ### Features

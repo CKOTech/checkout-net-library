@@ -173,11 +173,11 @@ namespace Checkout
 #if NET45 
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 #endif
-                responseMessage = await httpClient.SendAsync(request);
+                responseMessage = await httpClient.SendAsync(request).ConfigureAwait(false);
 
                 responseCode = responseMessage.StatusCode.ToString();
 
-                var responseContent = await responseMessage.Content.ReadAsByteArrayAsync();
+                var responseContent = await responseMessage.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
 
                 if (responseContent != null && responseContent.Length > 0)
                 {
