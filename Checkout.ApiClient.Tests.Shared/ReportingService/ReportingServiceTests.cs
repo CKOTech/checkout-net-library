@@ -52,7 +52,7 @@ namespace Tests
         [TestCase(SortColumn.Type)]
         public void QueryTransactions_ShouldAllowColumnSortingBy(SortColumn? sortColumn)
         {
-            var request = TestHelper.GetQueryRequest(string.Empty, null, null, sortColumn);
+            var request = TestHelper.GetQueryRequest(string.Empty, DateTime.Today, DateTime.Today, sortColumn);
             var response = CheckoutClient.ReportingService.QueryTransaction(request);
 
             response.Should().NotBeNull();

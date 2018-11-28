@@ -1,6 +1,7 @@
 [![Checkout.com](https://cdn.checkout.com/img/checkout-logo-online-payments.jpg)](https://checkout.com/)
 
 # Checkout .NET Standard Library
+[![Build Status](https://travis-ci.org/philippe-leonhardt-cko/checkout-net-library.svg?branch=master)](https://travis-ci.org/philippe-leonhardt-cko/checkout-net-library)&nbsp;[![NuGet](https://img.shields.io/nuget/v/Checkout.ApiClient.svg)](https://www.nuget.org/packages/Checkout.ApiClient)
 
 [Checkout.com](https://checkout.com/) is a software platform that has integrated 100% of the value chain to create payment infrastructures that truly make a difference.
 

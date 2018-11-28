@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using Checkout.ApiServices.Charges.RequestModels;
@@ -41,6 +42,7 @@ namespace Tests
             response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
             response.Model.Id.Should().StartWith("charge_");
 
+            response.HasError.Should().BeFalse();
             response.Model.AutoCapTime.Should().Be(cardCreateModel.AutoCapTime);
             response.Model.AutoCapture.Should().BeEquivalentTo(cardCreateModel.AutoCapture);
             response.Model.Email.Should().BeEquivalentTo(cardCreateModel.Email);
@@ -367,10 +369,65 @@ namespace Tests
 
             var response = CheckoutClient.ChargeService.RefundCharge(captureResponse.Model.Id, chargeRefundModel);
 
+            var refund = response.Model;
+
             //Check if charge details match
             response.Should().NotBeNull();
             response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
-            response.Model.OriginalId.Should().Be(captureResponse.Model.Id);
+            response.HasError.Should().BeFalse();
+            refund.OriginalId.Should().Be(captureResponse.Model.Id);
+        }
+
+        [Test]
+        public void HardFailRefundCharge()
+        {
+            var cardCreateModel = TestHelper.GetCardChargeCreateModel(TestHelper.RandomData.Email);
+
+            var charge = CheckoutClient.ChargeService.ChargeWithCard(cardCreateModel).Model;
+
+            charge.ResponseCode.Should().StartWith("10", "Charge must be 'Approved' first in order to be able to capture");
+
+            var chargeCaptureModel = TestHelper.GetChargeCaptureModel(charge.Value);
+
+            var captureResponse = CheckoutClient.ChargeService.CaptureCharge(charge.Id, chargeCaptureModel);
+
+            var chargeRefundModel = TestHelper.GetChargeRefundModel((Int32.Parse(charge.Value)+1).ToString());
+
+            var response = CheckoutClient.ChargeService.RefundCharge(captureResponse.Model.Id, chargeRefundModel);
+
+            var refund = response.Error;
+
+            //Check if charge details match
+            response.Should().NotBeNull();
+            response.HttpStatusCode.Should().Be(HttpStatusCode.BadRequest);
+            response.HasError.Should().BeTrue();
+            refund.ErrorCode.Should().Be("83024");
+        }
+
+        [Test]
+        public void SoftFailRefundCharge()
+        {
+            var cardCreateModel = TestHelper.GetCardChargeCreateModel(TestHelper.RandomData.Email);
+
+            var charge = CheckoutClient.ChargeService.ChargeWithCard(cardCreateModel).Model;
+
+            charge.ResponseCode.Should().StartWith("10", "Charge must be 'Approved' first in order to be able to capture");
+
+            var chargeCaptureModel = TestHelper.GetChargeCaptureModel(charge.Value);
+
+            var captureResponse = CheckoutClient.ChargeService.CaptureCharge(charge.Id, chargeCaptureModel);
+
+            var chargeRefundModel = TestHelper.GetChargeRefundModel((Int32.Parse(charge.Value) + 1).ToString());
+
+            var response = CheckoutClient.ChargeService.RefundCharge(captureResponse.Model.Id, chargeRefundModel);
+
+            var refund = response.Error;
+
+            //Check if charge details match
+            response.Should().NotBeNull();
+            response.HttpStatusCode.Should().Be(HttpStatusCode.BadRequest);
+            response.HasError.Should().BeTrue();
+            refund.ErrorCode.Should().Be("83024");
         }
 
         [Test]

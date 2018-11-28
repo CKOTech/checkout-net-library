@@ -26,6 +26,8 @@ namespace Checkout.ApiServices.Lookups.ResponseModels
 
         public string ProductType { get; set; }
 
+        public string Last4 { get; set; }
+
         public Dictionary<string, Dictionary<string, string>> Providers { get; set; }
     }
 }

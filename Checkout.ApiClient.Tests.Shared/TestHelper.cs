@@ -658,13 +658,13 @@ namespace Tests
         /// <returns>
         ///     An instance of BasePayout with value USD 200.00
         /// </returns>
-        public static BasePayout GetPayoutModel(string cardId, string cardholderFirstName, string cardholderLastName)
+        public static BasePayout GetPayoutModel(string cardId, string cardholderFirstName, string cardholderLastName, string currency = "EUR")
         {
             BasePayout basePayout = new BasePayout
             {
                 Destination = cardId,
                 Value = 200,
-                Currency = "EUR",
+                Currency = currency,
                 FirstName = cardholderFirstName,
                 LastName = cardholderLastName
             };

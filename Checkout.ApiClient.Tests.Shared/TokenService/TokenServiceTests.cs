@@ -20,6 +20,22 @@ namespace Tests
         }
 
         [Test]
+        public void CardTokenLookup_WithKountAsProvider()
+        {
+            var cardCreateModel = TestHelper.GetTokenCardModel();
+            var cardToken = CheckoutClient.TokenService.GetCardToken(cardCreateModel).Model.Id;
+            var response = CheckoutClient.LookupsService.GetTokenDetails(cardToken, "kount");
+            var paymentToken = response.Model;
+
+            response.Should().NotBeNull();
+            response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
+            paymentToken.Should().NotBeNull();
+            paymentToken.Providers.Should().NotBeNull();
+            var providers = paymentToken.Providers;
+            providers.Keys.Should().Contain("kount");
+        }
+
+        [Test]
         public void UpdatePaymentToken()
         {
             var paymentTokenCreateModel = TestHelper.GetPaymentTokenCreateModel(TestHelper.RandomData.Email);
