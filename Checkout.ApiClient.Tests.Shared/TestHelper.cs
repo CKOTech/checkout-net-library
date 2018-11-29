@@ -242,7 +242,7 @@ namespace Tests
             return new TokenCard()
             {
                 ExpiryMonth = "06",
-                ExpiryYear = "2018",
+                ExpiryYear = "2022",
                 Number = "4242424242424242",
                 Cvv = "100"
             };
@@ -255,7 +255,7 @@ namespace Tests
                 return new BaseCard()
                 {
                     ExpiryMonth = "06",
-                    ExpiryYear = "2018",
+                    ExpiryYear = "2022",
                     Name = RandomData.FullName,
                     BillingDetails = GetAddressModel()
                 };
@@ -658,13 +658,13 @@ namespace Tests
         /// <returns>
         ///     An instance of BasePayout with value USD 200.00
         /// </returns>
-        public static BasePayout GetPayoutModel(string cardId, string cardholderFirstName, string cardholderLastName)
+        public static BasePayout GetPayoutModel(string cardId, string cardholderFirstName, string cardholderLastName, string currency = "EUR")
         {
             BasePayout basePayout = new BasePayout
             {
                 Destination = cardId,
                 Value = 200,
-                Currency = "EUR",
+                Currency = currency,
                 FirstName = cardholderFirstName,
                 LastName = cardholderLastName
             };

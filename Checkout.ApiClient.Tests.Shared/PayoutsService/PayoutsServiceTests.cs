@@ -27,12 +27,34 @@ namespace Tests
             var payout = payoutResponse.Model;
 
             payoutResponse.HttpStatusCode.Should().Be(HttpStatusCode.OK);
+            payoutResponse.HasError.Should().BeFalse("HasError should only be set to True if response is an ErrorResponse");
             payout.ResponseCode.Should().Be("10000");
             payout.Status.Should().Be("Authorised");
             payout.ResponseSummary.Should().Be("Approved");
             payout.ResponseDetails.Should().Be("Approved");
+        }
 
+        [Test]
+        public void FailPayout()
+        {
+            // Create Customer with Card
+            var customerCreateModel = TestHelper.GetCustomerCreateModelWithCard(CardProvider.Mastercard);
+            var customer = CheckoutClient.CustomerService.CreateCustomer(customerCreateModel).Model;
+            var customerId = customer.Id;
+            var cardId = customer.Cards.Data[0].Id;
+            var cardholderName = customer.Cards.Data[0].Name;
+            var cardholderFirstName = cardholderName.Split(' ').First();
+            var cardholderLastName = cardholderName.Split(' ').Last();
 
+            // Make Payout
+            var payoutsCreateModel = TestHelper.GetPayoutModel(cardId, cardholderFirstName, cardholderLastName, "DUCKS");
+            var payoutResponse = CheckoutClient.PayoutsService.MakePayout(payoutsCreateModel);
+            var payout = payoutResponse.Error;
+
+            payoutResponse.HttpStatusCode.Should().Be(HttpStatusCode.BadRequest);
+            payoutResponse.HasError.Should().BeTrue("HasError should be set to True since response should be of type ErrorResponse");
+            payout.ErrorCode.Should().Be("70000");
+            payout.Errors.Should().NotBeEmpty();
         }
     }
 }
