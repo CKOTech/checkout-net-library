@@ -13,6 +13,13 @@ Starting with version 2.0.0 this project adheres to [Semantic Versioning](http:/
 
 <br />
 
+## 2.2.6 (2018-11-28)
+
+### Changes
+- **added** `Last4` property to `ApiServices.Lookups.ResponseModels.TokenDetails`
+
+<br />
+
 ## 2.2.5 (2018-10-25)
 
 ### Bug Fixes
@@ -170,4 +177,4 @@ This release is a port to **.NET Standard 1.3** and closes [#23](https://github.
 ## [1.3.0.6](https://github.com/checkout/checkout-net-library/tree/1.3.0.6) (2016-10-26)
 
 ### Features
-- **added:** *Bin* property to `ApiServices.Cards.ResponseModels.Card`
+- **added:** `Bin` property to `ApiServices.Cards.ResponseModels.Card`
