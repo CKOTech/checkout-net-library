@@ -30,5 +30,6 @@ namespace Checkout.ApiServices.Charges.ResponseModels
         public string AuthenticationResponse { get; set; }
         public string Eci { get; set; }
         public string Cavv { get; set; }
+        public string ThreeDsProtocolVersion { get; set; }
     }
 }
