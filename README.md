@@ -1,5 +1,7 @@
 [![Checkout.com](https://cdn.checkout.com/img/checkout-logo-online-payments.jpg)](https://checkout.com/)
 
+>**:heavy_exclamation_mark: This library points to Checkout.com's classic API. Please refer to the [latest .NET SDK](https://github.com/checkout/checkout-sdk-net) instead to benefit from the updated API**
+
 # Checkout .NET Standard Library
 [![Build Status](https://travis-ci.org/philippe-leonhardt-cko/checkout-net-library.svg?branch=master)](https://travis-ci.org/philippe-leonhardt-cko/checkout-net-library)&nbsp;[![NuGet](https://img.shields.io/nuget/v/Checkout.ApiClient.svg)](https://www.nuget.org/packages/Checkout.ApiClient)
 
