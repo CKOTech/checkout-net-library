@@ -7,7 +7,7 @@
     <RootNamespace>Checkout</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageId>Checkout.APIClient</PackageId>
-    <PackageVersion>2.2.6</PackageVersion>
+    <PackageVersion>2.2.7</PackageVersion>
     <Authors>Checkout.com Integration Team</Authors>
     <Title>Checkout.APIClient</Title>
     <Description>
@@ -21,7 +21,7 @@
     <PackageProjectUrl>https://github.com/checkout/checkout-net-library</PackageProjectUrl>
     <PackageIconUri>https://www.checkout.com/static/favicons/favicon-32x32.png</PackageIconUri>
     <PackageTags>payment; card; gateway; checkout; credit; money</PackageTags>
-    <PackageReleaseNotes>2.0.0 is a port to .NET Standard 1.3; 2.2.6 adds support for the new field last4 when looking up Card Token Details</PackageReleaseNotes>
+    <PackageReleaseNotes>2.0.0 is a port to .NET Standard 1.3; 2.2.7 adds support for the new field threeDsProtocolVersion when looking up Charge Details of a 3DS payment</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/checkout/checkout-net-library.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryBranch>master</RepositoryBranch>
